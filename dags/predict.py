@@ -38,8 +38,7 @@ def predict():
                         db_con_str='postgresql://postgres:postgres@postgres:5432/postgres')
 
     feature_path = prepare_features_with_io_task()
-    predict_with_io_task(feature_path=feature_path)
-    monitor_task()
+    predict_with_io_task(feature_path=feature_path) >> monitor_task()
 
 
 predict_dag = predict()
